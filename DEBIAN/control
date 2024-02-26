@@ -1,0 +1,5 @@
+Package: ipmicfg
+Version: 1.35.1-230912
+Architecture: amd64
+Maintainer: No support for this package <>
+Description: Supermicro IPMICFG tool
