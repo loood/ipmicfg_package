@@ -1,14 +1,16 @@
 #!/bin/bash
 set -e -x
-ZIP_FILENAME=IPMICFG_1.35.1_build.230912.zip
+VERSION=1.35.2
+BUILD=240627
+URL_BUILD=760
 wget \
-	https://www.supermicro.com/Bios/sw_download/642/$ZIP_FILENAME
+	https://www.supermicro.com/Bios/sw_download/${URL_BUILD}/IPMICFG_${VERSION}_build.${BUILD}.zip
 
 mkdir -p ipmicfg
 mkdir -p ipmicfg/opt/ipmicfg/bin ipmicfg/opt/ipmicfg/docs
 echo "See https://www.supermicro.com/about/policies/disclaimer.cfm" > ipmicfg/opt/ipmicfg/docs/LICENSE
-unzip -j $ZIP_FILENAME -d ipmicfg/opt/ipmicfg/bin/ IPMICFG_1.35.1_build.230912/Linux/64bit/IPMICFG-Linux.x86_64
-unzip -j $ZIP_FILENAME -d ipmicfg/opt/ipmicfg/docs/ IPMICFG_1.35.1_build.230912/ReleaseNotes.txt
+unzip -j IPMICFG_${VERSION}_build.${BUILD}.zip -d ipmicfg/opt/ipmicfg/bin/ IPMICFG_${VERSION}_build.${BUILD}/Linux/64bit/IPMICFG-Linux.x86_64
+unzip -j IPMICFG_${VERSION}_build.${BUILD}.zip -d ipmicfg/opt/ipmicfg/docs/ IPMICFG_${VERSION}_build.${BUILD}/ReleaseNotes.txt
 chmod 0644 ipmicfg/opt/ipmicfg/docs/ReleaseNotes.txt
 ln -s IPMICFG-Linux.x86_64 ipmicfg/opt/ipmicfg/bin/ipmicfg
 cp -r /workspace/DEBIAN/ ipmicfg/
